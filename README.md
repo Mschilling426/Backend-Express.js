@@ -59,7 +59,8 @@ Hello, Melissa!
 ├── .gitignore
 ├── node_modules/
 
-###### 👩‍💻 AuthorMelissa
+###### 👩‍💻 Author 
+Melissa Schilling
 📂 GitHub Profile: https://github.com/Mschilling426 
 
 
