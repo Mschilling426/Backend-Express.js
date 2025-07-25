@@ -1,63 +1,23 @@
-# Back-End Express.js – Warm-Up Assignment
+# Express Backend Project
 
-This is a project to show knowledge for the basic Express.js concepts and route handling. It was built as a warm-up assignment to explore the fundamentals of creating GET routes and passing parameters through the URL.
+A full-stack Express.js app that includes:
 
-## 🚀 Features
-- GET route for `/` that returns a welcome message
-- Dynamic GET route with paramaters for `/greet/:name` that personalizes responses
-- Server runs on customizable port '8000'
+- ✅ POST route with input validation (`/welcome`)
+- 🔎 GET route using query parameters (`/search`)
+- 🖼️ Static file serving for HTML, CSS, and JS (`public` folder)
 
-## 🛠️ Getting Started
+## How to Run
 
-### Prerequisites
+1. Clone the repo  
+2. Run `npm install`  
+3. Start the server with `node index.js`  
+4. Visit `http://localhost:8000` in your browser
 
-- [Node.js](https://nodejs.org/) installed  
-- Git and terminal access (optional for cloning)
+## Features
 
-### Installation Steps
-
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/YourGitHubUsername/Back-End-Express.js.git
-
-2. Navigate into the project folder:
-cd Back-End-Express.js
-
-3. Initialized Node.js:
-npm init -y
-
-4. Install dependencies:
- npm install express
-
-### 💻 Running the Server
-
-1. Start the server with:
-node index.js
-
-2. Visit in browser:
-http://localhost:8000
-
-##### ✨ Example Routes
-1. '/'
-
-Response:
-Welcome to the Express.js Warm-up!
-
-2. /greet/:name
-
-Example:
-http://localhost:8000/greet/Melissa
-
-Response:
-Hello, Melissa!
-
-###### 📁 Project StructureBack-End Express.js/
-├── index.js
-├── package.json
-├── package-lock.json
-├── README.md
-├── .gitignore
-├── node_modules/
+- JSON input validation
+- Query filtering with optional limits
+- Frontend served via Express static middleware
 
 ###### 👩‍💻 Author 
 Melissa Schilling
