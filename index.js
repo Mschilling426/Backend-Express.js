@@ -1,16 +1,26 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 3000;
+const APIError = require('./utilities/APIError'); 
 
 app.use(express.json());
 app.use(express.static('public'));
 
+const greetRouter = require('./routes/greet');
+
+app.use('/greet', greetRouter);
+
 const tasks = [];
 
+const loggingEnabled = process.env.LOGGING_ENABLED === 'true';
+
 const loggerGreet = (req,res,next) => {
-  if (req.path.startsWith('/greet')) {
+  if (loggingEnabled && req.path.startsWith('/greet')) {
     const timeStamp = new Date().toISOString();
     console.log(`[${timeStamp}] ${req.method} ${req.originalUrl}`);
+  }
 next();
 };
 
@@ -82,9 +92,6 @@ app.get('/tasks/:id', (req, res) => {
   res.json(task);
 });
 
-app.use((req, res) => {
-  res.status(404).send('404 - not found');
-})
 
 app.put('/tasks/:id', (req, res) => {
   const id = Number(req.params.id);
@@ -110,9 +117,29 @@ app.delete('/tasks/:id', (req, res) => {
   res.json({ message: 'Task deleted successfully' });
 })
 
+app.use((req, res) => {
+  res.status(404).send('404 - not found');
+});
+
+app.use((err, req, res, next) => {
+  if (err instanceof APIError) {  
+    console.error(`[APIError] ${err.status} - ${err.message}`);
+    return res.status(err.status).json({ error: err.message });
+  } 
+  if (process.env.NODE_ENV === 'development') {
+    console.error(`[Error] ${err.message}`);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+  });
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Mode: ${process.env.NODE_ENV === 'production' ? 'Production' : 'Development'}`);
 });
 
 

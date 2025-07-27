@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Mschilling426/Backend-Express.js#readme",
   "dependencies": {
+    "dotenv": "^17.2.1",
     "express": "^5.1.0"
   }
 }

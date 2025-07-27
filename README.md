@@ -11,7 +11,7 @@ A full-stack Express.js app that includes:
 1. Clone the repo  
 2. Run `npm install`  
 3. Start the server with `node index.js`  
-4. Visit `http://localhost:8000` in your browser
+4. Visit `http://localhost:3000` in your browser
 
 ## Features
 
